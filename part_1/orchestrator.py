@@ -33,7 +33,7 @@ OUT = ROOT / "out"
 
 def run(cmd: str):
     print(f"\n>>> {cmd}")
-    res = subprocess.run(shlex.split(cmd), cwd=ROOT)
+    res = subprocess.run([sys.executable] + shlex.split(cmd)[1:], cwd=ROOT)
     if res.returncode != 0:
         sys.exit(res.returncode)
 
